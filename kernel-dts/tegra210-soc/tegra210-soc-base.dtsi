@@ -244,7 +244,7 @@
 		address-space-prop {
 			common_as: common {
 				iova-start = <0x0 0x80000000>;
-				iova-size = <0x0 0x7FF00000>;
+				iova-size = <0x1 0x80000000>;
 				num-pf-page = <0>;
 				gap-page = <1>;
 			};
