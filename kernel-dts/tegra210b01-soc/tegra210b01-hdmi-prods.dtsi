@@ -1,7 +1,7 @@
 /*
  * tegra210b01-soc-prod.dtsi: SOC specific DTSI file Prod nodes.
  *
- * Copyright (c) 2017, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2017-2020, NVIDIA CORPORATION.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 #define SOR_NV_PDISP_SOR_DP_PADCTL2		0x1CC
 
 / {
-	host1x {
+	host1x@50000000 {
 		sor1 {
 			prod-settings {
 				#prod-cells = <3>;

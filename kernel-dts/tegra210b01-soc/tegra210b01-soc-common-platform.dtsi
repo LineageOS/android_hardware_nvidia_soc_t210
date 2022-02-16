@@ -1,7 +1,7 @@
 /*
  * tegra210b01-soc-common-platform.dtsi: Enabled node common for all platforms.
  *
- * Copyright (c) 2017-2018, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2017-2020, NVIDIA CORPORATION.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -215,7 +215,7 @@
 		status = "disabled";
 	};
 
-	host1x {
+	host1x@50000000 {
 		status = "okay";
 		vi {
 			status = "okay";

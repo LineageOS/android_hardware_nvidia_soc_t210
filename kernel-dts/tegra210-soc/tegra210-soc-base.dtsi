@@ -1,7 +1,7 @@
 /*
  * tegra210-soc-base.dtsi: SOC specific DTSI file with all node disabled.
  *
- * Copyright (c) 2013-2019, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2013-2020, NVIDIA CORPORATION.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1029,7 +1029,7 @@
 		status = "disabled";
 	      };
 
-	host1x: host1x {
+	host1x: host1x@50000000 {
 		compatible = "nvidia,tegra210-host1x", "simple-bus";
 #if defined(LINUX_VERSION) && LINUX_VERSION < 414
 		power-domains = <&host1x_pd>;
