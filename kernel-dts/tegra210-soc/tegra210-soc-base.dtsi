@@ -682,6 +682,7 @@
 		reg-names = "padctl";
 		resets = <&tegra_car 142>;
 		reset-names = "padctl";
+		interrupts = <0 49 0x04>;
 		status = "disabled";
 
 		pads {
@@ -1226,6 +1227,7 @@
 			compatible = "nvidia,tegra210-vic";
 			power-domains = <&pd_vic>;
 			reg = <0x0 0x54340000 0x0 0x00040000>;
+			interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>;
 			iommus = <&smmu TEGRA_SWGROUP_VIC>;
 #if TEGRA_IOMMU_DT_VERSION < DT_VERSION_2
 			iommu-group-id = <TEGRA_IOMMU_GROUP_HOST1X>;
