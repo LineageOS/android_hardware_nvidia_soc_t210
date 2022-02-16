@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2014-2020, NVIDIA CORPORATION.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,9 @@
                 sdhci1 = &sdmmc2;
                 sdhci2 = &sdmmc3;
                 sdhci3 = &sdmmc4;
+#if TEGRA_SDMMC_VERSION >= DT_VERSION_2
+		mmc0 = "/sdhci@700b0600";
+#endif
         };
 
 	sdmmc4: sdhci@700b0600 {
@@ -61,7 +64,11 @@
 		       <&tegra_car TEGRA210_CLK_PLL_P>,
 		       <&tegra_car TEGRA210_CLK_PLL_C4_OUT0>,
 		       <&tegra_car TEGRA210_CLK_SDMMC_LEGACY>;
+#if TEGRA_SDMMC_VERSION >= DT_VERSION_2
+		clock-names = "sdmmc", "pll_p", "pll_c4_out0", "tmclk";
+#else
 		clock-names = "sdmmc", "pll_p", "pll_c4_out0", "sdmmc_legacy_tm";
+#endif
 	};
 
 	sdmmc3: sdhci@700b0400 {
@@ -82,7 +89,11 @@
 		       <&tegra_car TEGRA210_CLK_PLL_P>,
 		       <&tegra_car TEGRA210_CLK_PLL_C4_OUT2>,
 		       <&tegra_car TEGRA210_CLK_SDMMC_LEGACY>;
+#if TEGRA_SDMMC_VERSION >= DT_VERSION_2
+		clock-names = "sdmmc", "pll_p", "pll_c4_out2", "tmclk";
+#else
 		clock-names = "sdmmc", "pll_p", "pll_c4_out2", "sdmmc_legacy_tm";
+#endif
 		keep-power-in-suspend;
 		ignore-pm-notify;
 		non-removable;
@@ -126,7 +137,11 @@
 		clocks = <&tegra_car TEGRA210_CLK_SDMMC2>,
 		       <&tegra_car TEGRA210_CLK_PLL_P>,
 		       <&tegra_car TEGRA210_CLK_SDMMC_LEGACY>;
+#if TEGRA_SDMMC_VERSION >= DT_VERSION_2
+		clock-names = "sdmmc", "pll_p", "tmclk";
+#else
 		clock-names = "sdmmc", "pll_p", "sdmmc_legacy_tm";
+#endif
 		non-removable;
 		cap-mmc-highspeed;
 		cap-sd-highspeed;
@@ -163,7 +178,11 @@
 		clocks = <&tegra_car TEGRA210_CLK_SDMMC1>,
 		       <&tegra_car TEGRA210_CLK_PLL_P>,
 		       <&tegra_car TEGRA210_CLK_SDMMC_LEGACY>;
+#if TEGRA_SDMMC_VERSION >= DT_VERSION_2
+		clock-names = "sdmmc", "pll_p", "tmclk";
+#else
 		clock-names = "sdmmc", "pll_p", "sdmmc_legacy_tm";
+#endif
 		pwrdet-support;
 		pinctrl-names = "sdmmc_schmitt_enable", "sdmmc_schmitt_disable", "sdmmc_clk_schmitt_enable", "sdmmc_clk_schmitt_disable", "sdmmc_drv_code", "sdmmc_default_drv_code", "sdmmc_e_33v_enable", "sdmmc_e_33v_disable";
 		pinctrl-0 = <&sdmmc1_schmitt_enable_state>;

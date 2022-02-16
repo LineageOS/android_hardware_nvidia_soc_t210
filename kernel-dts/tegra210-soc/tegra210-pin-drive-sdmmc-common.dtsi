@@ -1,8 +1,8 @@
 /*
- * tegra210-pin-drive-sdmmc-common.dtsi: Common SDMMC pinmcontrol drive to
+ * tegra210-pin-drive-sdmmc-common.dtsi: Common SDMMC pincontrol drive to
  *				configure sdmmc pin's.
  *
- * Copyright (c) 2015-2017, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2015-2021, NVIDIA CORPORATION.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,27 @@
 
 / {
 	pmc@7000e400 {
+#if TEGRA_SDMMC_VERSION >= DT_VERSION_2
+		sdmmc1_3v3: sdmmc1-3v3 {
+			pins = "sdmmc1";
+			power-source = <TEGRA_IO_PAD_VOLTAGE_3V3>;
+		};
+
+		sdmmc1_1v8: sdmmc1-1v8 {
+			pins = "sdmmc1";
+			power-source = <TEGRA_IO_PAD_VOLTAGE_1V8>;
+		};
+
+		sdmmc3_3v3: sdmmc3-3v3 {
+			pins = "sdmmc3";
+			power-source = <TEGRA_IO_PAD_VOLTAGE_3V3>;
+		};
+
+		sdmmc3_1v8: sdmmc3-1v8 {
+			pins = "sdmmc3";
+			power-source = <TEGRA_IO_PAD_VOLTAGE_1V8>;
+		};
+#endif
 		sdmmc1_e_33V_enable: sdmmc1_e_33V_enable {
 			sdmmc1 {
 				pins = "sdmmc1";
@@ -47,6 +68,7 @@
 				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
 			};
 		};
+
 	};
 
 	pinmux: pinmux@700008d4 {
@@ -79,6 +101,29 @@
 			};
 		};
 
+#if TEGRA_SDMMC_VERSION >= DT_VERSION_2
+		sdmmc1_3v3_drv: sdmmc1-3v3-drv {
+			sdmmc1 {
+				nvidia,pins = "drive_sdmmc1";
+				nvidia,pull-down-strength = <0x8>;
+				nvidia,pull-up-strength = <0x8>;
+			};
+		};
+		sdmmc1_1v8_drv: sdmmc1-1v8-drv {
+			sdmmc1 {
+				nvidia,pins = "drive_sdmmc1";
+				nvidia,pull-down-strength = <0x4>;
+				nvidia,pull-up-strength = <0x3>;
+			};
+		};
+		sdmmc2_1v8_drv: sdmmc2-1v8-drv {
+			sdmmc2 {
+				nvidia,pins = "drive_sdmmc2";
+				nvidia,pull-down-strength = <0x10>;
+				nvidia,pull-up-strength = <0x10>;
+			};
+		};
+#endif
 		sdmmc1_drv_code_1_8V: sdmmc1_drv_code {
 			sdmmc1 {
 				nvidia,pins = "drive_sdmmc1";
@@ -123,6 +168,29 @@
 			};
 		};
 
+#if TEGRA_SDMMC_VERSION >= DT_VERSION_2
+		sdmmc3_3v3_drv: sdmmc3-3v3-drv {
+			sdmmc3 {
+				nvidia,pins = "drive_sdmmc3";
+				nvidia,pull-down-strength = <0x8>;
+				nvidia,pull-up-strength = <0x8>;
+			};
+		};
+		sdmmc3_1v8_drv: sdmmc3-1v8-drv {
+			sdmmc3 {
+				nvidia,pins = "drive_sdmmc3";
+				nvidia,pull-down-strength = <0x4>;
+				nvidia,pull-up-strength = <0x3>;
+			};
+		};
+		sdmmc4_1v8_drv: sdmmc4-1v8-drv {
+			sdmmc4 {
+				nvidia,pins = "drive_sdmmc4";
+				nvidia,pull-down-strength = <0x10>;
+				nvidia,pull-up-strength = <0x10>;
+			};
+		};
+#endif
 		sdmmc3_drv_code_1_8V: sdmmc3_drv_code {
 			sdmmc3 {
 				nvidia,pins = "drive_sdmmc3";
