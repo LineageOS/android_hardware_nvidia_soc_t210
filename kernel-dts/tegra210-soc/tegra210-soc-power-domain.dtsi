@@ -98,8 +98,7 @@
 
 			pd_xusbhost: xusbc {
 				clocks = <&tegra_car TEGRA210_CLK_XUSB_HOST>;
-				resets = <&tegra_mc TEGRA210_MC_RESET_XUSB_HOST>,
-				         <&tegra_car TEGRA210_CLK_XUSB_HOST>;
+				resets = <&tegra_car TEGRA210_CLK_XUSB_HOST>;
 				#power-domain-cells = <0>;
 			};
 
