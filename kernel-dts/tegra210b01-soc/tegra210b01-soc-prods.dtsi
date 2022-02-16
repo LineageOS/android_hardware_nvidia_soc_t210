@@ -867,11 +867,7 @@
 			};
 		};
 	};
-#if TEGRA_XUSB_PADCONTROL_VERSION >= DT_VERSION_2
 	xusb_padctl@7009f000 {
-#else
-	pinctrl@7009f000 {
-#endif
 		prod-settings {
 			#prod-cells = <4>;
 			mask-one-style;

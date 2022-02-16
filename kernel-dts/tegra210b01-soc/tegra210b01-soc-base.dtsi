@@ -121,7 +121,6 @@
 		/delete-property/ nvidia,secure-pmc;
 	};
 
-#if TEGRA_XUSB_PADCONTROL_VERSION >= DT_VERSION_2
 	xusb_padctl: xusb_padctl@7009f000 {
 		compatible = "nvidia,tegra210b01-xusb-padctl";
 		reg =   <0x0 0x7009f000 0x0 0x1000>;
@@ -224,7 +223,6 @@
 			};
 		};
 	};
-#endif
 
 	pinctrl@7009f000 {
 		clocks = <&tegra_car TEGRA210_CLK_HSIC_TRK>,
