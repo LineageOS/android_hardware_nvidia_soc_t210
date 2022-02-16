@@ -543,18 +543,38 @@
                              <GIC_PPI 10
                                 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>;
 		clock-frequency = <19200000>;
+		arm,no-tick-in-suspend;
 		status = "disabled";
 	};
 
 	timer@60005000 {
+		reg = <0x0 0x60005000 0x0 0x400>;
+		clocks = <&tegra_car TEGRA210_CLK_TIMER>;
+#if defined(LINUX_VERSION) && LINUX_VERSION > 414
+		compatible = "nvidia,tegra210-timer", "nvidia,tegra20-timer";
+		interrupts = <GIC_SPI 156 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 152 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 153 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 154 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 176 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 177 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 178 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 179 IRQ_TYPE_LEVEL_HIGH>;
+		clock-names = "timer";
+#else
 		compatible = "nvidia,tegra210-timer", "nvidia,tegra30-timer",
 			     "nvidia,tegra30-timer-wdt";
-		reg = <0x0 0x60005000 0x0 0x400>;
 		interrupts = <GIC_SPI 176 IRQ_TYPE_LEVEL_HIGH>,
 			     <GIC_SPI 177 IRQ_TYPE_LEVEL_HIGH>,
 			     <GIC_SPI 178 IRQ_TYPE_LEVEL_HIGH>,
 			     <GIC_SPI 179 IRQ_TYPE_LEVEL_HIGH>;
-		clocks = <&tegra_car TEGRA210_CLK_TIMER>;
+#endif
 		status = "disabled";
 	};
 
