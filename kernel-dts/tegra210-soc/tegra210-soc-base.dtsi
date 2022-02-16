@@ -46,6 +46,7 @@
 		sdhci1 = &sdhci1;
 		sdhci2 = &sdhci2;
 		sdhci3 = &sdhci3;
+		host1x = &host1x;
 	};
 
 	cpus {
