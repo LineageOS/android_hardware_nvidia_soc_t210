@@ -292,6 +292,10 @@
 		compatible = "nvidia,dma_test";
 	};
 
+	mods_test: mods_test {
+		compatible = "nvidia,mods_test";
+	};
+
 	bpmp {
 		compatible = "nvidia,tegra210-bpmp";
 		carveout-start = <0x80005000>;
