@@ -261,7 +261,7 @@
 		status = "disabled";
 	};
 
-	thermal-fan-est {
+	thermal_fan_est {
 		status = "disabled";
 	};
 
