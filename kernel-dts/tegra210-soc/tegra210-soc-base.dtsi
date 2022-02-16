@@ -1043,9 +1043,6 @@
 
 	host1x: host1x@50000000 {
 		compatible = "nvidia,tegra210-host1x", "simple-bus";
-#if defined(LINUX_VERSION) && LINUX_VERSION < 414
-		power-domains = <&host1x_pd>;
-#endif
 		wakeup-capable;
 		reg = <0x0 0x50000000 0x0 0x00034000>;
 		interrupts = <0 65 0x04   /* mpcore syncpt */
