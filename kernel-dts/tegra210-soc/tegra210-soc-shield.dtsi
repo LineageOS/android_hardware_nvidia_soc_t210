@@ -469,10 +469,18 @@
 
 	efuse@7000f800 {
 		status = "okay";
+#if LINUX_VERSION < 419
 		efuse-burn {
 			status = "okay";
 		};
+#endif
 	};
+
+#if LINUX_VERSION >= 419
+	efuse-burn {
+		status = "okay";
+	};
+#endif
 
 	pmc-iopower {
 		status = "okay";

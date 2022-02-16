@@ -63,10 +63,18 @@
 	};
 
 	efuse@7000f800 {
+#if LINUX_VERSION < 419
 		efuse-burn {
 			compatible = "nvidia,tegra210b01-efuse-burn";
 		};
+#endif
 	};
+
+#if LINUX_VERSION >= 419
+	efuse-burn {
+		compatible = "nvidia,tegra210b01-efuse-burn";
+	};
+#endif
 
 	pinmux@700008d4 {
 		compatible = "nvidia,tegra210b01-pinmux", "nvidia,tegra210-pinmux";

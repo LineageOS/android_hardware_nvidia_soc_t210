@@ -2223,13 +2223,24 @@
 		clock-names = "fuse";
 		nvidia,clock-always-on;
 		status = "disabled";
+#if LINUX_VERSION < 419
 		efuse-burn {
 			compatible = "nvidia,tegra210-efuse-burn";
 			clocks = <&tegra_car TEGRA210_CLK_CLK_M>;
 			clock-names = "clk_m";
 			status = "disabled";
 		};
+#endif
 	};
+
+#if LINUX_VERSION >= 419
+	efuse-burn {
+		compatible = "nvidia,tegra210-efuse-burn";
+		clocks = <&tegra_car TEGRA210_CLK_CLK_M>;
+		clock-names = "clk_m";
+		status = "disabled";
+	};
+#endif
 
 	actmon@6000c800 {
 		status = "okay";
